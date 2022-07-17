@@ -7,11 +7,20 @@ import Result from "./pages/Result";
 
 function Carousel() {
   const [page, setPage] = useState(0);
+  const [selected, setSelected] = useState();
+  const [params, setParams] = useState();
   const size = 4;
   const toNext = () => {
     setPage((curPage) => (curPage + 1) % size);
   };
-
+  const onLocationSelect = (selected) => {
+    setSelected(selected);
+    toNext();
+  };
+  const onParamRequest = (params) => {
+    setParams(params);
+    console.log("요청한다!", params);
+  };
   return (
     <div>
       <div className="carousel" style={{ marginLeft: `-${page * 100}%` }}>
@@ -19,10 +28,10 @@ function Carousel() {
           <MainPage onNext={toNext} />
         </div>
         <div className="carousel-item">
-          <MapSelect />
+          <MapSelect onNext={onLocationSelect} />
         </div>
         <div className="carousel-item">
-          <OptionSelect />
+          <OptionSelect onNext={onParamRequest} />
         </div>
         <div className="carousel-item">
           <Result />

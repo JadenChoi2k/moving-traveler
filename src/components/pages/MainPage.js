@@ -2,7 +2,7 @@ import styles from "./pages.css";
 
 function MainPage({ onNext }) {
   return (
-    <div className="main-page vertical-center">
+    <div className="page main-page vertical-center">
       <div>
         <div className="logo">
           <img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="logo_img" />

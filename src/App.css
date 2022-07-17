@@ -5,15 +5,3 @@
   position: relative;
   overflow: hidden;
 }
-
-/* 4페이지로 구현함 */
-.carousel {
-  width: 400%;
-  position: absolute;
-  transition: left 0.5 ease-out;
-}
-
-.carousel-item {
-  width: 25%;
-  float: left;
-}

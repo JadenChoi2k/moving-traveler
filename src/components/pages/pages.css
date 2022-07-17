@@ -6,6 +6,9 @@
   font-style: normal;
 }
 
+/* NanumSquare */
+@import url("https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css");
+
 .btn {
   border: none;
   border-radius: 15px;
@@ -29,14 +32,19 @@
   justify-content: center;
 }
 
-.main-page {
+.page {
   height: 100%;
-  font-family: "LeferiPoint-BlackObliqueA";
+  overflow: auto;
+  font-family: "NanumSquare";
 }
 
 .logo img {
   width: 66.6%;
   max-width: 468px;
+}
+
+.main-page {
+  font-family: "LeferiPoint-BlackObliqueA" !important;
 }
 
 .main-phrase {
@@ -53,10 +61,89 @@
 }
 
 .main-bottom {
-  height: 5rem;
+  height: 4rem;
 }
 
 .main-bottom button {
   width: 80%;
   max-width: 376px;
+}
+
+.map-select h1 {
+  margin-top: 16px;
+}
+
+.map-select > * {
+  margin: 10px 0;
+}
+
+.map-select > h3 {
+  margin-bottom: 0;
+}
+
+.map-select > button {
+  width: 80%;
+  max-width: 384px;
+  margin-top: 0;
+}
+
+.search-bar {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 60%;
+  max-width: 768px;
+  height: 100%;
+  font-size: 22px;
+  padding: 0 15px;
+  border-radius: 15px 0 0 15px;
+  border-right: none;
+  border: 2px solid #f4e153;
+  outline: none;
+}
+
+.search-btn {
+  width: 20%;
+  max-width: 150px;
+  height: 100%;
+  padding: 10px;
+  border-radius: 0 15px 15px 0;
+  border: none;
+  outline: none;
+}
+
+.option-page > * {
+  margin-top: 10px;
+}
+
+.description {
+  width: 90%;
+  max-width: 768px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: rgba(244, 225, 83, 0.5);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.option-table {
+  width: 90%;
+  max-width: 468px;
+  margin: 0 auto;
+  font-size: 18px;
+  border-spacing: 10px;
+}
+
+.option-table th {
+  font-size: 22px;
+}
+
+.option-table input {
+  width: 100px;
+  font-size: 18px;
+  padding: 2px 5px;
 }
