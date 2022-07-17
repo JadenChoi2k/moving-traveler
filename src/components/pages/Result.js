@@ -29,7 +29,7 @@ function Result({ location, params, onNext }) {
   }, [ready]);
   return (
     <div className="page result-page">
-      <a href="#">
+      <a href="/">
         <img
           className="logo"
           src={process.env.PUBLIC_URL + "/img/logo.png"}

@@ -46,6 +46,8 @@ function MapSelect({ onNext }) {
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               updateMapByQuery();
+            } else if (event.key === "Tab") {
+              event.preventDefault();
             }
           }}
         />
