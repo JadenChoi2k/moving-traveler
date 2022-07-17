@@ -1,4 +1,4 @@
-function Result() {
+function Result({ onNext }) {
   return <div>result</div>;
 }
 

@@ -16,7 +16,7 @@ function Carousel() {
     <div>
       <div className="carousel" style={{ marginLeft: `-${page * 100}%` }}>
         <div className="carousel-item">
-          <MainPage />
+          <MainPage onNext={toNext} />
         </div>
         <div className="carousel-item">
           <MapSelect />

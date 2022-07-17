@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "Moving Traveler - 이사하는 방랑인을 위한 분석 도구",
   "name": "Create React App Sample",
   "icons": [
     {
@@ -8,14 +8,19 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "img/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "img/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "img/logo.png",
+      "type": "image/png",
+      "sizes": "3000x3000"
     }
   ],
   "start_url": ".",

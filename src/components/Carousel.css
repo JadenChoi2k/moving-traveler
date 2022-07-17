@@ -1,11 +1,13 @@
 /* 4페이지로 구현함 */
 .carousel {
   width: 400%;
+  height: 100%;
   position: absolute;
-  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .carousel-item {
   width: 25%;
+  height: 100%;
   float: left;
 }

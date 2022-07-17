@@ -1,4 +1,4 @@
-function MapSelect() {
+function MapSelect({ onNext }) {
   return <div>map</div>;
 }
 
