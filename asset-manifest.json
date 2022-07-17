@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/moving-traveler/static/css/main.1a988b76.chunk.css",
-    "main.js": "/moving-traveler/static/js/main.d6e7e270.chunk.js",
-    "main.js.map": "/moving-traveler/static/js/main.d6e7e270.chunk.js.map",
+    "main.js": "/moving-traveler/static/js/main.db51abbf.chunk.js",
+    "main.js.map": "/moving-traveler/static/js/main.db51abbf.chunk.js.map",
     "runtime-main.js": "/moving-traveler/static/js/runtime-main.18980cc8.js",
     "runtime-main.js.map": "/moving-traveler/static/js/runtime-main.18980cc8.js.map",
-    "static/js/2.ca12aa65.chunk.js": "/moving-traveler/static/js/2.ca12aa65.chunk.js",
-    "static/js/2.ca12aa65.chunk.js.map": "/moving-traveler/static/js/2.ca12aa65.chunk.js.map",
+    "static/js/2.55f2775a.chunk.js": "/moving-traveler/static/js/2.55f2775a.chunk.js",
+    "static/js/2.55f2775a.chunk.js.map": "/moving-traveler/static/js/2.55f2775a.chunk.js.map",
     "index.html": "/moving-traveler/index.html",
     "static/css/main.1a988b76.chunk.css.map": "/moving-traveler/static/css/main.1a988b76.chunk.css.map",
-    "static/js/2.ca12aa65.chunk.js.LICENSE.txt": "/moving-traveler/static/js/2.ca12aa65.chunk.js.LICENSE.txt"
+    "static/js/2.55f2775a.chunk.js.LICENSE.txt": "/moving-traveler/static/js/2.55f2775a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.18980cc8.js",
-    "static/js/2.ca12aa65.chunk.js",
+    "static/js/2.55f2775a.chunk.js",
     "static/css/main.1a988b76.chunk.css",
-    "static/js/main.d6e7e270.chunk.js"
+    "static/js/main.db51abbf.chunk.js"
   ]
 }
