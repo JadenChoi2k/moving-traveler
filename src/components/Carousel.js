@@ -7,19 +7,19 @@ import Result from "./pages/Result";
 
 function Carousel() {
   const [page, setPage] = useState(0);
-  const [selected, setSelected] = useState();
+  const [location, setLocation] = useState();
   const [params, setParams] = useState();
   const size = 4;
   const toNext = () => {
     setPage((curPage) => (curPage + 1) % size);
   };
-  const onLocationSelect = (selected) => {
-    setSelected(selected);
+  const onLocationSelect = (location) => {
+    setLocation(location);
     toNext();
   };
   const onParamRequest = (params) => {
     setParams(params);
-    console.log("요청한다!", params);
+    toNext();
   };
   return (
     <div>
@@ -34,12 +34,9 @@ function Carousel() {
           <OptionSelect onNext={onParamRequest} />
         </div>
         <div className="carousel-item">
-          <Result />
+          <Result location={location} params={params} />
         </div>
       </div>
-      <button onClick={toNext} style={{ position: "absolute", left: "0" }}>
-        next
-      </button>
     </div>
   );
 }

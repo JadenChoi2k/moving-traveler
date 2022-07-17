@@ -40,7 +40,7 @@ function MapSelect({ onNext }) {
       <div className="search-bar">
         <input
           className="search-input"
-          placeholder="키워드를 입력해주세요"
+          placeholder="키워드 입력"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={(event) => {

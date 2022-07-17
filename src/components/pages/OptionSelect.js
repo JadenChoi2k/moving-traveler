@@ -101,7 +101,7 @@ function OptionSelect({ onNext }) {
         onClick={() =>
           onNext(
             optionKeys.map((k) => ({
-              key: k,
+              name: k,
               std: params[k].std,
               weight: params[k].weight,
             }))
