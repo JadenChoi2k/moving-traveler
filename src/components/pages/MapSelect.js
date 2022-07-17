@@ -48,6 +48,7 @@ function MapSelect({ onNext }) {
               updateMapByQuery();
             } else if (event.key === "Tab") {
               event.preventDefault();
+              event.target.focus();
             }
           }}
         />
