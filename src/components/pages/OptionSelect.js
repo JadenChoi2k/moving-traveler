@@ -53,6 +53,7 @@ function OptionSelect({ onNext }) {
                     <td>
                       <input
                         type="number"
+                        tabIndex={-1}
                         value={params[opt].std}
                         onChange={(event) => {
                           setParams((current) => {
@@ -73,6 +74,7 @@ function OptionSelect({ onNext }) {
                     <td>
                       <input
                         type="number"
+                        tabIndex={-1}
                         value={params[opt].weight}
                         onChange={(event) => {
                           setParams((current) => {
