@@ -60,8 +60,11 @@ function OptionSelect({ onNext }) {
                               event.target.parentNode.parentElement.getAttribute(
                                 "keyname"
                               );
-                            const val = event.target.value * 1;
-                            current[keyName].std = val;
+                            const val =
+                              event.target.value === ""
+                                ? ""
+                                : event.target.value * 1;
+                            current[keyName].std = val === "" ? 0 : val;
                             return { ...current };
                           });
                         }}
@@ -72,7 +75,18 @@ function OptionSelect({ onNext }) {
                         type="number"
                         value={params[opt].weight}
                         onChange={(event) => {
-                          // params[obj.key].std = event.target.value * 1;
+                          setParams((current) => {
+                            const keyName =
+                              event.target.parentNode.parentElement.getAttribute(
+                                "keyname"
+                              );
+                            const val =
+                              event.target.value === ""
+                                ? ""
+                                : event.target.value * 1;
+                            current[keyName].weight = val === "" ? 0 : val;
+                            return { ...current };
+                          });
                         }}
                       />
                     </td>
