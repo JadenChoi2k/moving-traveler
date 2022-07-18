@@ -9,14 +9,15 @@ const optionNames = {
   distance: "거리 (km)",
 };
 const defaultValues = {
-  deposit: { std: 500, weight: -0.1 },
-  rent: { std: 50, weight: -10 },
-  area: { std: 50, weight: 5 },
-  distance: { std: 5, weight: -5 },
+  deposit: { std: 500, weight: -0.1, bigger: false },
+  rent: { std: 50, weight: -10, bigger: false },
+  area: { std: 50, weight: 5, bigger: true },
+  distance: { std: 5, weight: -5, bigger: false },
 };
 
 function OptionSelect({ onNext }) {
   const [params, setParams] = useState();
+  const [houseType, setHouseType] = useState();
   useEffect(() => {
     const _params = {};
     for (const key of optionKeys) {
@@ -31,10 +32,26 @@ function OptionSelect({ onNext }) {
     <div className="page option-page">
       <h1>STEP 2 - 가중치 입력</h1>
       <h4 className="description">
-        중요도에 따라서 가중치를 부여합니다. 양수이면 값이 클수록 우선순위를
-        갖고, 음수이면 값이 작을수록 우선순위를 갖습니다. 가중치의 절대값이
-        클수록 해당 인수가 더 큰 중요도를 차지합니다.
+        중요도에 따라서 가중치를 부여합니다. 양수이면 항목의 값이 클수록
+        우선순위를 갖고, 음수이면 항목의 값이 작을수록 우선순위를 갖습니다.
+        가중치의 절대값이 클수록 해당 인수가 더 큰 중요도를 차지합니다.
       </h4>
+      <select
+        tabIndex={-1}
+        onChange={(event) => {
+          setHouseType(event.target.value);
+        }}
+      >
+        <option key="house_desc" value={-1}>
+          집 종류 선택
+        </option>
+        <option key="oneroom" value="oneroom">
+          원룸
+        </option>
+        <option key="villa" value="villa">
+          빌라, 투룸+
+        </option>
+      </select>
       <table className="option-table">
         <tbody>
           <tr>
@@ -64,8 +81,8 @@ function OptionSelect({ onNext }) {
                             const val =
                               event.target.value === ""
                                 ? ""
-                                : event.target.value * 1;
-                            current[keyName].std = val === "" ? 0 : val;
+                                : parseInt(event.target.value);
+                            current[keyName].std = val;
                             return { ...current };
                           });
                         }}
@@ -82,11 +99,14 @@ function OptionSelect({ onNext }) {
                               event.target.parentNode.parentElement.getAttribute(
                                 "keyname"
                               );
+                            const bigger = defaultValues[keyName].bigger;
                             const val =
                               event.target.value === ""
                                 ? ""
-                                : event.target.value * 1;
-                            current[keyName].weight = val === "" ? 0 : val;
+                                : window.Math.abs(
+                                    parseInt(event.target.value)
+                                  ) * (bigger ? 1 : -1);
+                            current[keyName].weight = val;
                             return { ...current };
                           });
                         }}
@@ -100,15 +120,20 @@ function OptionSelect({ onNext }) {
       </table>
       <button
         className="btn"
-        onClick={() =>
+        onClick={() => {
+          if (!houseType || houseType == -1) {
+            alert("집의 종류를 선택해주세요");
+            return;
+          }
           onNext(
             optionKeys.map((k) => ({
               name: k,
               std: params[k].std,
               weight: params[k].weight,
-            }))
-          )
-        }
+            })),
+            houseType
+          );
+        }}
       >
         <h2>결과 요청</h2>
       </button>

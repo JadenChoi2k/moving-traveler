@@ -8,6 +8,7 @@ import Result from "./pages/Result";
 function Carousel() {
   const [page, setPage] = useState(0);
   const [location, setLocation] = useState();
+  const [houseType, setHouseType] = useState("");
   const [params, setParams] = useState();
   const size = 4;
   const toNext = () => {
@@ -17,8 +18,9 @@ function Carousel() {
     setLocation(location);
     toNext();
   };
-  const onParamRequest = (params) => {
+  const onParamRequest = (params, houseType) => {
     setParams(params);
+    setHouseType(houseType);
     toNext();
   };
   return (
@@ -34,7 +36,7 @@ function Carousel() {
           <OptionSelect onNext={onParamRequest} />
         </div>
         <div className="carousel-item">
-          <Result location={location} params={params} />
+          <Result location={location} houseType={houseType} params={params} />
         </div>
       </div>
     </div>
