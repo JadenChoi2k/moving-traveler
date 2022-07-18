@@ -36,11 +36,11 @@ function MapSelect({ onNext }) {
   }, [map]);
   return (
     <div className="page map-select">
-      <h1>STEP 1 - 이사 지점 선택</h1>
+      <h1>STEP 1 - 거점 선택</h1>
       <div className="search-bar">
         <input
           className="search-input"
-          placeholder="키워드 입력"
+          placeholder="장소 입력"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={(event) => {
@@ -80,7 +80,7 @@ function MapSelect({ onNext }) {
       {selected != null ? (
         <h3>선택: {selected.content}</h3>
       ) : (
-        <h3>위 지도에서 검색 후 선택해주세요</h3>
+        <h3>거점(직장, 학교 등)이 될 장소를 선택해주세요</h3>
       )}
       <button
         className="btn"

@@ -9,8 +9,8 @@ const optionNames = {
   distance: "거리 (km)",
 };
 const defaultValues = {
-  deposit: { std: 500, weight: -0.1, bigger: false },
-  rent: { std: 50, weight: -10, bigger: false },
+  deposit: { std: 500, weight: -2, bigger: false },
+  rent: { std: 50, weight: -7, bigger: false },
   area: { std: 50, weight: 5, bigger: true },
   distance: { std: 5, weight: -5, bigger: false },
 };
@@ -32,9 +32,8 @@ function OptionSelect({ onNext }) {
     <div className="page option-page">
       <h1>STEP 2 - 가중치 입력</h1>
       <h4 className="description">
-        중요도에 따라서 가중치를 부여합니다. 양수이면 항목의 값이 클수록
-        우선순위를 갖고, 음수이면 항목의 값이 작을수록 우선순위를 갖습니다.
-        가중치의 절대값이 클수록 해당 인수가 더 큰 중요도를 차지합니다.
+        중요도에 따라서 가중치를 부여합니다. 가중치의 절대값이 클수록 더 큰
+        중요도를 차지합니다.
       </h4>
       <select
         tabIndex={-1}

@@ -10,7 +10,7 @@ function MainPage({ onNext }) {
         <div className="main-phrase">
           <h1>MOVING TRAVELER</h1>
           <hr />
-          <h2>방랑인들을 위한 집터 분석 도구</h2>
+          <h2>이사 가기 전 부동산 분석</h2>
         </div>
         <div className="main-bottom vertical-center">
           <button className="btn" onClick={onNext}>

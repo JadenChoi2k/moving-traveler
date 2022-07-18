@@ -157,8 +157,15 @@
 }
 
 /* result page */
+
 .result-page > * {
   margin-top: 10px;
+  margin: auto;
+}
+
+.result-page hr,
+table {
+  max-width: 1280px;
 }
 
 .result-page hr {
@@ -206,6 +213,14 @@
 .result-page .img-cell {
   padding: 0;
   width: 33%;
+}
+
+.item-result-row {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 /* loader */
