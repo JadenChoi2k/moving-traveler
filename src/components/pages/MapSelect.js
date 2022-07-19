@@ -93,12 +93,18 @@ function MapSelect({ onNext }) {
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
             position={marker.position}
             onClick={() => {
+              const moveTo = new window.kakao.maps.LatLng(
+                marker.position.lat,
+                marker.position.lng
+              );
+              map.setLevel(2);
+              map.setCenter(moveTo);
               setInfo(marker);
               setSelected(marker);
             }}
           >
             {info && info.content === marker.content && (
-              <div style={{ color: "#000" }}>{marker.content}</div>
+              <div style={{ color: "black" }}>{marker.content}</div>
             )}
           </MapMarker>
         ))}
