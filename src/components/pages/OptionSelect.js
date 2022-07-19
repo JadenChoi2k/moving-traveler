@@ -39,6 +39,11 @@ function OptionSelect({ onNext }) {
       <select
         tabIndex={-1}
         onChange={(event) => {
+          if (event.target.value === "apt") {
+            alert("아파트는 현재 지원하지 않습니다.");
+            event.preventDefault();
+            return;
+          }
           setHouseType(event.target.value);
         }}
       >
@@ -51,7 +56,7 @@ function OptionSelect({ onNext }) {
         <option key="villa" value="villa">
           빌라, 투룸+
         </option>
-        <option key="apt" value="apt">
+        <option key="apt" value="apt" disabled>
           아파트
         </option>
       </select>
@@ -157,7 +162,8 @@ function OptionSelect({ onNext }) {
               std: params[k].std,
               weight: params[k].weight,
             })),
-            houseType
+            houseType,
+            salesType
           );
         }}
       >

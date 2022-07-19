@@ -5,7 +5,7 @@ import call from "../../request/caller.js";
 
 const houseTypeName = { oneroom: "원룸", villa: "빌라/투룸+" };
 
-function Result({ location, houseType, params, onNext }) {
+function Result({ location, houseType, salesType, params, onNext }) {
   const [ready, setReady] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState();
@@ -23,6 +23,7 @@ function Result({ location, houseType, params, onNext }) {
       call(
         {
           houseType: houseType,
+          salesType: salesType,
           params: params,
           location: [location.position.lat * 1, location.position.lng * 1],
         },
