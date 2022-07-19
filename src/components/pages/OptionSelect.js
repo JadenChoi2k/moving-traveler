@@ -18,6 +18,7 @@ const defaultValues = {
 function OptionSelect({ onNext }) {
   const [params, setParams] = useState();
   const [houseType, setHouseType] = useState();
+  const [salesType, setSalesType] = useState();
   useEffect(() => {
     const _params = {};
     for (const key of optionKeys) {
@@ -49,6 +50,28 @@ function OptionSelect({ onNext }) {
         </option>
         <option key="villa" value="villa">
           빌라, 투룸+
+        </option>
+        <option key="apt" value="apt">
+          아파트
+        </option>
+      </select>
+      <select
+        tabIndex={-1}
+        onChange={(event) => {
+          setSalesType(event.target.value);
+        }}
+      >
+        <option key="house_desc" value={-1}>
+          거래 방식 선택
+        </option>
+        <option key="월세" value="월세">
+          월세
+        </option>
+        <option key="전세" value="전세">
+          전세
+        </option>
+        <option key="매매" value="매매">
+          매매
         </option>
       </select>
       <table className="option-table">
@@ -122,6 +145,10 @@ function OptionSelect({ onNext }) {
         onClick={() => {
           if (!houseType || houseType == -1) {
             alert("집의 종류를 선택해주세요");
+            return;
+          }
+          if (!salesType || salesType == -1) {
+            alert("거래 방식을 선택해주세요");
             return;
           }
           onNext(

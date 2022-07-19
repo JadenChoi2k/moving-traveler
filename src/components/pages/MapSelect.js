@@ -7,6 +7,7 @@ function MapSelect({ onNext }) {
   const [map, setMap] = useState();
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
+  const [position, setPosition] = useState();
   const updateMapByQuery = () => {
     if (!map || !query) return;
     const ps = new window.kakao.maps.services.Places();
@@ -25,6 +26,7 @@ function MapSelect({ onNext }) {
           });
           bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
         }
+        setPosition(null);
         setMarkers(markers);
         map.setBounds(bounds);
       }
@@ -61,7 +63,31 @@ function MapSelect({ onNext }) {
         style={{ width: "100%", height: "70%" }}
         level={3}
         onCreate={setMap}
+        onClick={(_t, mouseEvent) => {
+          const coords = {
+            lat: mouseEvent.latLng.getLat(),
+            lng: mouseEvent.latLng.getLng(),
+          };
+          const geocoder = new window.kakao.maps.services.Geocoder();
+          setPosition(coords);
+          geocoder.coord2Address(coords.lng, coords.lat, (result, status) => {
+            if (status === window.kakao.maps.services.Status.OK) {
+              if (result[0].road_address) {
+                setSelected({
+                  content: result[0].road_address.address_name,
+                  position: coords,
+                });
+              } else {
+                setSelected({
+                  content: result[0].address.address_name,
+                  position: coords,
+                });
+              }
+            }
+          });
+        }}
       >
+        {position && <MapMarker position={position} />}
         {markers.map((marker) => (
           <MapMarker
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}

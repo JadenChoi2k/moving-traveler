@@ -1,5 +1,3 @@
-import styles from "./pages.css";
-
 function MainPage({ onNext }) {
   return (
     <div className="page main-page vertical-center">

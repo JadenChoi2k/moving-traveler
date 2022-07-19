@@ -136,6 +136,7 @@
 .option-page select {
   font-size: 18px;
   padding: 2px 5px;
+  margin: 0 10px;
 }
 
 .option-table {
