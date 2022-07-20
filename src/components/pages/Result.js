@@ -42,11 +42,16 @@ function Result({ location, houseType, salesType, params, onNext }) {
       </a>
       <h1 style={{ margin: "0 0 10px 0" }}>결과</h1>
       <hr />
-      {ready ? (
+      {ready && (
         <h3>
           [{houseTypeName[houseType]}] {location.content} 주변
+          {data && (
+            <div>
+              {data.adj_size}개 매물 중 TOP {data.items.length}
+            </div>
+          )}
         </h3>
-      ) : null}
+      )}
       {loaded ? (
         <table>
           <tbody>
