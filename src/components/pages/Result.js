@@ -13,6 +13,17 @@ function Result({ location, houseType, salesType, params, onNext }) {
     setData(data.data);
     setLoaded(true);
   };
+  const getPriceText = (item) => {
+    const overMillion = (price) => price >= 10000;
+    const priceText = (price) =>
+      overMillion(price) ? `${price / 10000}억원` : `${price}만원`;
+    const deposit = item.deposit;
+    const rent = item.rent;
+    if (salesType === "매매" || salesType === "전세") {
+      return priceText(deposit);
+    }
+    return `보증금: ${priceText(deposit)}/월세: ${priceText(rent)}`;
+  };
   useEffect(() => {
     if (location && params) {
       setReady(true);
@@ -44,7 +55,7 @@ function Result({ location, houseType, salesType, params, onNext }) {
       <hr />
       {ready && (
         <h3>
-          [{houseTypeName[houseType]}] {location.content} 주변
+          [{houseTypeName[houseType]}][{salesType}] {location.content} 주변
           {data && (
             <div>
               {data.adj_size}개 매물 중 TOP {data.items.length}
@@ -80,9 +91,7 @@ function Result({ location, houseType, salesType, params, onNext }) {
                         <h3>
                           [{window.Math.round(item.point)}점] {item.title}
                         </h3>
-                        <h4>
-                          보증금: {item.deposit}만원/월세: {item.rent}만원
-                        </h4>
+                        <h4>{getPriceText(item)}</h4>
                       </div>
                       <div className="item-result-row">
                         <h4>
