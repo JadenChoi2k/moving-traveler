@@ -92,6 +92,7 @@ function OptionSelect({ onNext }) {
                     <td>
                       <input
                         type="range"
+                        className="slider"
                         min={0}
                         max={100}
                         tabIndex={-1}
