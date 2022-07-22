@@ -9,10 +9,10 @@ const optionNames = {
   distance: "거리 (km)",
 };
 const defaultValues = {
-  deposit: { std: 500, weight: -2, bigger: false },
-  rent: { std: 50, weight: -7, bigger: false },
-  area: { std: 50, weight: 5, bigger: true },
-  distance: { std: 5, weight: -5, bigger: false },
+  deposit: { weight: 20, bigger: false },
+  rent: { weight: 70, bigger: false },
+  area: { weight: 50, bigger: true },
+  distance: { weight: 50, bigger: false },
 };
 
 function OptionSelect({ onNext }) {
@@ -23,7 +23,6 @@ function OptionSelect({ onNext }) {
     const _params = {};
     for (const key of optionKeys) {
       _params[key] = {
-        std: defaultValues[key].std,
         weight: defaultValues[key].weight,
       };
     }
@@ -32,10 +31,7 @@ function OptionSelect({ onNext }) {
   return (
     <div className="page option-page">
       <h1>STEP 2 - 가중치 입력</h1>
-      <h4 className="description">
-        중요도에 따라서 가중치를 부여합니다. 가중치의 절대값이 클수록 더 큰
-        중요도를 차지합니다.
-      </h4>
+      <h4 className="description">중요도에 따라서 가중치를 부여합니다.</h4>
       <select
         tabIndex={-1}
         onChange={(event) => {
@@ -83,8 +79,7 @@ function OptionSelect({ onNext }) {
         <tbody>
           <tr>
             <th>항목</th>
-            <th>기준값</th>
-            <th>가중치</th>
+            <th>중요도</th>
           </tr>
           {params
             ? optionKeys.map((opt) => {
@@ -96,28 +91,9 @@ function OptionSelect({ onNext }) {
                     <td>{optionNames[opt]}</td>
                     <td>
                       <input
-                        type="number"
-                        tabIndex={-1}
-                        value={params[opt].std}
-                        onChange={(event) => {
-                          setParams((current) => {
-                            const keyName =
-                              event.target.parentNode.parentElement.getAttribute(
-                                "keyname"
-                              );
-                            const val =
-                              event.target.value === ""
-                                ? ""
-                                : parseInt(event.target.value);
-                            current[keyName].std = val;
-                            return { ...current };
-                          });
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="number"
+                        type="range"
+                        min={0}
+                        max={100}
                         tabIndex={-1}
                         value={params[opt].weight}
                         onChange={(event) => {
@@ -126,13 +102,7 @@ function OptionSelect({ onNext }) {
                               event.target.parentNode.parentElement.getAttribute(
                                 "keyname"
                               );
-                            const bigger = defaultValues[keyName].bigger;
-                            const val =
-                              event.target.value === ""
-                                ? ""
-                                : window.Math.abs(
-                                    parseInt(event.target.value)
-                                  ) * (bigger ? 1 : -1);
+                            const val = event.target.value;
                             current[keyName].weight = val;
                             return { ...current };
                           });
@@ -159,8 +129,7 @@ function OptionSelect({ onNext }) {
           onNext(
             optionKeys.map((k) => ({
               name: k,
-              std: params[k].std,
-              weight: params[k].weight,
+              weight: params[k].weight * (defaultValues[k].bigger ? 1 : -1),
             })),
             houseType,
             salesType

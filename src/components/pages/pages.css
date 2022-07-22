@@ -206,8 +206,8 @@ table {
 
 .result-page img {
   width: 100%;
-  max-width: 467px;
   height: 100%;
+  max-width: 467px;
   object-fit: cover;
 }
 

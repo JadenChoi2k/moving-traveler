@@ -89,7 +89,7 @@ function Result({ location, houseType, salesType, params, onNext }) {
                     <div>
                       <div className="item-result-row">
                         <h3>
-                          [{window.Math.round(item.point)}점] {item.title}
+                          [{index + 1}위] {item.title}
                         </h3>
                         <h4>{getPriceText(item)}</h4>
                       </div>
